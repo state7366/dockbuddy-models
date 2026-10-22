@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "source": "dockbuddy",
-  "generated_at": "2026-10-22T22:14:24",
+  "generated_at": "2026-10-22T22:22:24",
   "models": {
     "esm2": {
       "name": "esm2",
@@ -376,7 +376,7 @@
             "dest": "src-proteinmpnn.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos/ProteinMPNN"
+              "to": "repos"
             }
           }
         ],
@@ -411,7 +411,7 @@
             "dest": "src-proteinmpnn.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos/ProteinMPNN"
+              "to": "repos"
             }
           }
         ],
@@ -467,7 +467,7 @@
             "dest": "src-saprot.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos/SaProt"
+              "to": "repos"
             }
           }
         ],
@@ -570,7 +570,7 @@
             "dest": "src-tranception.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos/Tranception"
+              "to": "repos"
             }
           }
         ],
@@ -621,7 +621,7 @@
             "dest": "src-geostab.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos/GeoStab"
+              "to": "repos"
             }
           }
         ],
@@ -668,7 +668,7 @@
             "dest": "src-catpred.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos/catpred"
+              "to": "repos"
             }
           }
         ],

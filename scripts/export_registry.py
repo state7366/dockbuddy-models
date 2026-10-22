@@ -81,17 +81,17 @@ def build_weights(e: dict, mj: dict) -> list:
 
 
 def build_source(e: dict, mj: dict) -> list:
-    """source 资产: pullUnits → units/src-<单元>.tar.gz, strip 4 层(home/ubuntu/dockbuddy/repos)解包到 root/repos/<dest>。
+    """source 资产: pullUnits → units/src-<单元>.tar.gz, strip 4 层(home/ubuntu/dockbuddy/repos)解包到 root/repos。
 
-    dest 是「解压后的目录名」(如 ProteinMPNN); 下载文件用独立文件名 src-<pu>.tar.gz,
-    避免下载文件路径与解压目录路径冲突(否则 repos/ProteinMPNN 既是 tar.gz 又是目录 → FileExistsError)。
+    tar 内容 strip 4 后 arcname 自带 <dest>/ 前缀(如 ProteinMPNN/xxx), 故 extract.to 保持 "repos"
+    即可解包到 root/repos/<dest>/。dest 只用于下载文件名 src-<pu>.tar.gz, 避免下载文件路径
+    (repos/<dest>) 与解压目录路径冲突(否则 repos/ProteinMPNN 既是 tar.gz 又是目录 → FileExistsError)。
     """
     pu = e.get("pullUnits", "") or ""
     if not pu:
         return []
-    dest = SOURCE_DEST.get(pu, pu)
     return [{"cos": f"units/src-{pu}.tar.gz", "dest": f"src-{pu}.tar.gz",
-             "extract": {"strip": 4, "to": f"repos/{dest}"}}]
+             "extract": {"strip": 4, "to": "repos"}}]
 
 
 def main() -> int:
