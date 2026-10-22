@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "source": "dockbuddy",
-  "generated_at": "2026-10-21T08:34:25",
+  "generated_at": "2026-10-22T22:14:24",
   "models": {
     "esm2": {
       "name": "esm2",
@@ -373,10 +373,10 @@
         "source": [
           {
             "cos": "units/src-proteinmpnn.tar.gz",
-            "dest": "ProteinMPNN",
+            "dest": "src-proteinmpnn.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos"
+              "to": "repos/ProteinMPNN"
             }
           }
         ],
@@ -408,10 +408,10 @@
         "source": [
           {
             "cos": "units/src-proteinmpnn.tar.gz",
-            "dest": "ProteinMPNN",
+            "dest": "src-proteinmpnn.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos"
+              "to": "repos/ProteinMPNN"
             }
           }
         ],
@@ -464,10 +464,10 @@
         "source": [
           {
             "cos": "units/src-saprot.tar.gz",
-            "dest": "SaProt",
+            "dest": "src-saprot.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos"
+              "to": "repos/SaProt"
             }
           }
         ],
@@ -567,10 +567,10 @@
         "source": [
           {
             "cos": "units/src-tranception.tar.gz",
-            "dest": "Tranception",
+            "dest": "src-tranception.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos"
+              "to": "repos/Tranception"
             }
           }
         ],
@@ -618,10 +618,10 @@
         "source": [
           {
             "cos": "units/src-geostab.tar.gz",
-            "dest": "GeoStab",
+            "dest": "src-geostab.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos"
+              "to": "repos/GeoStab"
             }
           }
         ],
@@ -665,10 +665,10 @@
         "source": [
           {
             "cos": "units/src-catpred.tar.gz",
-            "dest": "catpred",
+            "dest": "src-catpred.tar.gz",
             "extract": {
               "strip": 4,
-              "to": "repos"
+              "to": "repos/catpred"
             }
           }
         ],
