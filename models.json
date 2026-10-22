@@ -1,0 +1,824 @@
+{
+  "version": "2.0",
+  "source": "dockbuddy",
+  "generated_at": "2026-10-21T08:34:25",
+  "models": {
+    "esm2": {
+      "name": "esm2",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "any",
+      "requires": {},
+      "params": [
+        {
+          "name": "model_name",
+          "label": "模型规模",
+          "type": "dropdown",
+          "default": "esm2_t33_650M_UR50D",
+          "options": [
+            "esm2_t33_650M_UR50D",
+            "esm2_t6_8M_UR50D",
+            "esm2_t30_150M_UR50D",
+            "esm2_t36_3B_UR50D"
+          ]
+        }
+      ],
+      "pip": [
+        "fair-esm"
+      ],
+      "repo": null,
+      "default": true,
+      "note": "",
+      "assets": {
+        "weights": [
+          {
+            "cos": "hot/esm2/esm2_t33_650M_UR50D.pt",
+            "dest": "esm2/esm2_t33_650M_UR50D.pt"
+          },
+          {
+            "cos": "hot/esm2/esm2_t6_8M_UR50D.pt",
+            "dest": "esm2/esm2_t6_8M_UR50D.pt"
+          }
+        ],
+        "source": [],
+        "tool": []
+      }
+    },
+    "venusplm": {
+      "name": "venusplm",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "any",
+      "requires": {},
+      "params": [
+        {
+          "name": "attn_impl",
+          "label": "注意力实现",
+          "type": "dropdown",
+          "default": "sdpa",
+          "options": [
+            "sdpa",
+            "naive",
+            "flash_attn"
+          ]
+        }
+      ],
+      "pip": [
+        "vplm",
+        "sortedcontainers"
+      ],
+      "repo": null,
+      "default": true,
+      "note": "[2026-10-15 固化] 打分参数名 weights_dir=models/venusplm/assets(本地快照目录, 含 config/tokenizer/safetensors); 传错必走 HF 公网(违反内网铁律)",
+      "assets": {
+        "weights": [
+          {
+            "cos": "warm/venusplm/model.safetensors",
+            "dest": "venusplm/assets/model.safetensors"
+          },
+          {
+            "cos": "warm/venusplm/config.json",
+            "dest": "venusplm/assets/config.json"
+          },
+          {
+            "cos": "warm/venusplm/vocab.txt",
+            "dest": "venusplm/assets/vocab.txt"
+          },
+          {
+            "cos": "warm/venusplm/tokenizer_config.json",
+            "dest": "venusplm/assets/tokenizer_config.json"
+          },
+          {
+            "cos": "warm/venusplm/special_tokens_map.json",
+            "dest": "venusplm/assets/special_tokens_map.json"
+          },
+          {
+            "cos": "warm/venusplm/configuration_transformer.py",
+            "dest": "venusplm/assets/configuration_transformer.py"
+          },
+          {
+            "cos": "warm/venusplm/modeling_transformer.py",
+            "dest": "venusplm/assets/modeling_transformer.py"
+          },
+          {
+            "cos": "warm/venusplm/tokenization_transformer.py",
+            "dest": "venusplm/assets/tokenization_transformer.py"
+          }
+        ],
+        "source": [],
+        "tool": []
+      }
+    },
+    "esm1v": {
+      "name": "esm1v",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "any",
+      "requires": {},
+      "params": [],
+      "pip": [
+        "fair-esm"
+      ],
+      "repo": null,
+      "default": true,
+      "note": "",
+      "assets": {
+        "weights": [
+          {
+            "cos": "hot/esm1v/esm1v_t33_650M_UR90S_1.pt",
+            "dest": "esm1v/esm1v_t33_650M_UR90S_1.pt"
+          },
+          {
+            "cos": "hot/esm1v/esm1v_t33_650M_UR90S_2.pt",
+            "dest": "esm1v/esm1v_t33_650M_UR90S_2.pt"
+          },
+          {
+            "cos": "hot/esm1v/esm1v_t33_650M_UR90S_3.pt",
+            "dest": "esm1v/esm1v_t33_650M_UR90S_3.pt"
+          },
+          {
+            "cos": "hot/esm1v/esm1v_t33_650M_UR90S_4.pt",
+            "dest": "esm1v/esm1v_t33_650M_UR90S_4.pt"
+          },
+          {
+            "cos": "hot/esm1v/esm1v_t33_650M_UR90S_5.pt",
+            "dest": "esm1v/esm1v_t33_650M_UR90S_5.pt"
+          }
+        ],
+        "source": [],
+        "tool": []
+      }
+    },
+    "ddgun": {
+      "name": "ddgun",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "cpu",
+      "requires": {
+        "msa": true
+      },
+      "params": [],
+      "pip": [
+        "setuptools<81",
+        "ddgun"
+      ],
+      "repo": null,
+      "default": true,
+      "note": "统计势, 无权重无源码; 需 MSA(跟着序列走, 表单上传)",
+      "assets": {
+        "weights": [],
+        "source": [],
+        "tool": []
+      }
+    },
+    "lfb": {
+      "name": "lfb",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "cpu",
+      "requires": {
+        "msa": true
+      },
+      "params": [],
+      "pip": [
+        "fair-esm"
+      ],
+      "repo": null,
+      "default": true,
+      "note": "家族似然比, 复用 esm2 权重 + 家族 MSA(跟着序列走)",
+      "assets": {
+        "weights": [],
+        "source": [],
+        "tool": []
+      }
+    },
+    "evmutation": {
+      "name": "evmutation",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "cpu",
+      "requires": {
+        "msa": true
+      },
+      "params": [],
+      "pip": [
+        "evcouplings"
+      ],
+      "repo": null,
+      "default": true,
+      "note": "上位性模型, plmc 训练在镜像内; 需 MSA(跟着序列走)",
+      "assets": {
+        "weights": [],
+        "source": [],
+        "tool": []
+      }
+    },
+    "msa_transformer": {
+      "name": "msa_transformer",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "cpu",
+      "requires": {
+        "msa": true
+      },
+      "params": [],
+      "pip": [
+        "fair-esm"
+      ],
+      "repo": null,
+      "default": true,
+      "note": "MSA Transformer(ESM-MSA-1b), 需 MSA(跟着序列走)",
+      "assets": {
+        "weights": [
+          {
+            "cos": "warm/msa_transformer/esm_msa1b_t12_100M_UR50S.pt",
+            "dest": "msa_transformer/esm_msa1b_t12_100M_UR50S.pt"
+          },
+          {
+            "cos": "warm/msa_transformer/esm_msa1b_t12_100M_UR50S-contact-regression.pt",
+            "dest": "msa_transformer/esm_msa1b_t12_100M_UR50S-contact-regression.pt"
+          }
+        ],
+        "source": [],
+        "tool": []
+      }
+    },
+    "profam": {
+      "name": "profam",
+      "kind": "score",
+      "env": "profam",
+      "python": null,
+      "status": "available",
+      "device_req": "any",
+      "requires": {
+        "msa": true
+      },
+      "params": [],
+      "pip": null,
+      "repo": null,
+      "default": true,
+      "note": "env=profam(py3.11), 需 MSA(跟着序列走)",
+      "assets": {
+        "weights": [
+          {
+            "cos": "warm/profam1/checkpoints/last.ckpt",
+            "dest": "profam1/assets/checkpoints/last.ckpt"
+          },
+          {
+            "cos": "warm/profam1/.hydra/config.yaml",
+            "dest": "profam1/assets/.hydra/config.yaml"
+          },
+          {
+            "cos": "warm/profam1/.hydra/gym_config.yaml",
+            "dest": "profam1/assets/.hydra/gym_config.yaml"
+          }
+        ],
+        "source": [],
+        "tool": []
+      }
+    },
+    "esm_if": {
+      "name": "esm_if",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "any",
+      "requires": {
+        "pdb": true
+      },
+      "params": [],
+      "pip": [
+        "fair-esm",
+        "torch-scatter"
+      ],
+      "repo": null,
+      "default": true,
+      "note": "ESM-IF1 反向折叠, 需 WT 结构 PDB(跟着序列走)",
+      "assets": {
+        "weights": [
+          {
+            "cos": "warm/esm_if/esm_if1_gvp4_t16_142M_UR50.pt",
+            "dest": "esm_if/esm_if1_gvp4_t16_142M_UR50.pt"
+          }
+        ],
+        "source": [],
+        "tool": []
+      }
+    },
+    "foldx": {
+      "name": "foldx",
+      "kind": "tool",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "cpu",
+      "requires": {
+        "pdb": true
+      },
+      "params": [],
+      "pip": [],
+      "repo": null,
+      "default": true,
+      "note": "FoldX 力场, 二进制在镜像内; 需 WT 结构 PDB(跟着序列走)",
+      "assets": {
+        "weights": [],
+        "source": [],
+        "tool": []
+      }
+    },
+    "thermompnn": {
+      "name": "thermompnn",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "cpu",
+      "requires": {
+        "pdb": true
+      },
+      "params": [],
+      "pip": [],
+      "repo": {
+        "git": "https://github.com/HeliXonProtein/ThermoMPNN.git",
+        "dest": "repos/ThermoMPNN"
+      },
+      "default": true,
+      "note": "热稳定性 MPNN, 复用 repos/ProteinMPNN 源码; 需 WT 结构 PDB",
+      "assets": {
+        "weights": [
+          {
+            "cos": "warm/thermompnn/thermoMPNN_default.pt",
+            "dest": "thermompnn/assets/ThermoMPNN/models/thermoMPNN_default.pt"
+          },
+          {
+            "cos": "warm/thermompnn/vanilla_model_weights/v_48_030.pt",
+            "dest": "thermompnn/assets/ThermoMPNN/vanilla_model_weights/v_48_030.pt"
+          }
+        ],
+        "source": [
+          {
+            "cos": "units/src-proteinmpnn.tar.gz",
+            "dest": "ProteinMPNN",
+            "extract": {
+              "strip": 4,
+              "to": "repos"
+            }
+          }
+        ],
+        "tool": []
+      }
+    },
+    "solubility_mpnn": {
+      "name": "solubility_mpnn",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "cpu",
+      "requires": {
+        "pdb": true
+      },
+      "params": [],
+      "pip": [],
+      "repo": null,
+      "default": true,
+      "note": "溶解度 MPNN, 复用 repos/ProteinMPNN 源码; 需 WT 结构 PDB",
+      "assets": {
+        "weights": [
+          {
+            "cos": "warm/proteinmpnn/soluble_model_weights/v_48_030.pt",
+            "dest": "solubility_mpnn/solublempnn_v_48_030.pt"
+          }
+        ],
+        "source": [
+          {
+            "cos": "units/src-proteinmpnn.tar.gz",
+            "dest": "ProteinMPNN",
+            "extract": {
+              "strip": 4,
+              "to": "repos"
+            }
+          }
+        ],
+        "tool": []
+      }
+    },
+    "saprot": {
+      "name": "saprot",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "any",
+      "requires": {
+        "pdb": true
+      },
+      "params": [],
+      "pip": [
+        "fair-esm"
+      ],
+      "repo": {
+        "git": "https://github.com/westlake-repl/SaProt.git",
+        "dest": "repos/SaProt"
+      },
+      "default": true,
+      "note": "结构感知 PLM(残基+3Di), 需 WT 结构 PDB + repos/SaProt 源码 + foldseek",
+      "assets": {
+        "weights": [
+          {
+            "cos": "hot/saprot/SaProt_650M_AF2/pytorch_model.bin",
+            "dest": "saprot/assets/SaProt_650M_AF2/pytorch_model.bin"
+          },
+          {
+            "cos": "hot/saprot/SaProt_650M_AF2/config.json",
+            "dest": "saprot/assets/SaProt_650M_AF2/config.json"
+          },
+          {
+            "cos": "hot/saprot/SaProt_650M_AF2/vocab.txt",
+            "dest": "saprot/assets/SaProt_650M_AF2/vocab.txt"
+          },
+          {
+            "cos": "hot/saprot/SaProt_650M_AF2/tokenizer_config.json",
+            "dest": "saprot/assets/SaProt_650M_AF2/tokenizer_config.json"
+          },
+          {
+            "cos": "hot/saprot/SaProt_650M_AF2/special_tokens_map.json",
+            "dest": "saprot/assets/SaProt_650M_AF2/special_tokens_map.json"
+          }
+        ],
+        "source": [
+          {
+            "cos": "units/src-saprot.tar.gz",
+            "dest": "SaProt",
+            "extract": {
+              "strip": 4,
+              "to": "repos"
+            }
+          }
+        ],
+        "tool": []
+      }
+    },
+    "venusrem": {
+      "name": "venusrem",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "available",
+      "device_req": "gpu",
+      "requires": {},
+      "params": [],
+      "pip": [],
+      "repo": {
+        "git": "https://github.com/ai4protein/VenusREM.git",
+        "dest": "repos/VenusREM-Harness",
+        "patches": "patches",
+        "repo_subdir": "VenusREM-Harness"
+      },
+      "default": true,
+      "note": "检索增强 PLM, esm2_hf 骨干落全局 models/esm2_hf/; vrh 补丁版在镜像; 需 GPU",
+      "assets": {
+        "weights": [
+          {
+            "cos": "hot/esm2_hf/model.safetensors",
+            "dest": "esm2_hf/model.safetensors"
+          },
+          {
+            "cos": "hot/esm2_hf/config.json",
+            "dest": "esm2_hf/config.json"
+          },
+          {
+            "cos": "hot/esm2_hf/vocab.txt",
+            "dest": "esm2_hf/vocab.txt"
+          },
+          {
+            "cos": "hot/esm2_hf/tokenizer_config.json",
+            "dest": "esm2_hf/tokenizer_config.json"
+          },
+          {
+            "cos": "hot/esm2_hf/special_tokens_map.json",
+            "dest": "esm2_hf/special_tokens_map.json"
+          }
+        ],
+        "source": [],
+        "tool": []
+      }
+    },
+    "tranception": {
+      "name": "tranception",
+      "kind": "score",
+      "env": "tranception",
+      "python": "3.8",
+      "status": "available",
+      "device_req": "gpu",
+      "requires": {},
+      "params": [],
+      "pip": [
+        {
+          "spec": "torch==1.13.1",
+          "index_url": "https://download.pytorch.org/whl/cpu"
+        },
+        "numpy==1.23.5",
+        "pandas==1.5.3",
+        "scipy==1.9.3",
+        "tqdm",
+        "biopython==1.79",
+        {
+          "spec": "transformers==4.17.0",
+          "extra_args": "--only-binary :all:"
+        },
+        "tokenizers==0.11.6",
+        "datasets==1.18.3",
+        "aiohttp==3.8.1",
+        "pyarrow<12"
+      ],
+      "repo": {
+        "git": "https://github.com/OATML-Markslab/Tranception.git",
+        "dest": "repos/Tranception"
+      },
+      "default": true,
+      "note": "env=tranception(py3.8) + repos/Tranception 源码 + checkpoint; 需 GPU",
+      "assets": {
+        "weights": [
+          {
+            "cos": "warm/tranception/pytorch_model.bin",
+            "dest": "tranception/Tranception_Small/pytorch_model.bin"
+          },
+          {
+            "cos": "warm/tranception/config.json",
+            "dest": "tranception/Tranception_Small/config.json"
+          }
+        ],
+        "source": [
+          {
+            "cos": "units/src-tranception.tar.gz",
+            "dest": "Tranception",
+            "extract": {
+              "strip": 4,
+              "to": "repos"
+            }
+          }
+        ],
+        "tool": []
+      }
+    },
+    "geostab": {
+      "name": "geostab",
+      "kind": "score",
+      "env": "geostab",
+      "python": "3.10",
+      "status": "blocked",
+      "device_req": "gpu",
+      "requires": {
+        "pdb": true
+      },
+      "params": [],
+      "pip": [
+        "biopandas",
+        "biopython",
+        "click",
+        "pdb-tools",
+        "fair-esm"
+      ],
+      "repo": {
+        "git": "https://github.com/Gonglab-THU/GeoStab.git",
+        "dest": "repos/GeoStab",
+        "patches": "patches",
+        "repo_subdir": "GeoStab"
+      },
+      "default": true,
+      "note": "权重 GeoStab.tar.gz 需 extract 回填 repos/GeoStab, 但 bootstrap pull_weights 不处理 extract; 且 runner geostab_dir 与 model.json repo.dest 口径不一致, 待统一",
+      "assets": {
+        "weights": [
+          {
+            "cos": "warm/geostab/GeoStab.tar.gz",
+            "dest": "geostab/assets/GeoStab.tar.gz",
+            "extract": {
+              "glob": "GeoStab/model_*/model.pt",
+              "strip": 1,
+              "to": "repos/GeoStab"
+            }
+          }
+        ],
+        "source": [
+          {
+            "cos": "units/src-geostab.tar.gz",
+            "dest": "GeoStab",
+            "extract": {
+              "strip": 4,
+              "to": "repos"
+            }
+          }
+        ],
+        "tool": []
+      }
+    },
+    "catpred": {
+      "name": "catpred",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "blocked",
+      "device_req": "any",
+      "requires": {
+        "pdb": true
+      },
+      "params": [],
+      "pip": [
+        "pandas-flavor",
+        "typed-argument-parser",
+        "rotary_embedding_torch==0.6.5",
+        "progress",
+        "faiss-cpu",
+        "ipdb",
+        "descriptastorus"
+      ],
+      "repo": {
+        "git": "https://github.com/jonathanguy/CatPred-DL.git",
+        "dest": "repos/catpred",
+        "patches": "patches"
+      },
+      "default": false,
+      "note": "需每变体独立 <vid>.pdb(WT.pdb + 突变建模, build_catpred_structs.py), 非单个结构上传, 待接结构生成步骤",
+      "assets": {
+        "weights": [
+          {
+            "cos": "cold/catpred/capsule_data_update.tar.gz",
+            "dest": "catpred/checkpoint/capsule_data_update.tar.gz"
+          }
+        ],
+        "source": [
+          {
+            "cos": "units/src-catpred.tar.gz",
+            "dest": "catpred",
+            "extract": {
+              "strip": 4,
+              "to": "repos"
+            }
+          }
+        ],
+        "tool": []
+      }
+    },
+    "promep": {
+      "name": "promep",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "blocked",
+      "device_req": "any",
+      "requires": {},
+      "params": [],
+      "pip": null,
+      "repo": null,
+      "default": false,
+      "note": "权重不可得(drlnet/dmsnet 无 release)",
+      "assets": {
+        "weights": [],
+        "source": [],
+        "tool": []
+      }
+    },
+    "deepsequence": {
+      "name": "deepsequence",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "blocked",
+      "device_req": "any",
+      "requires": {},
+      "params": [],
+      "pip": null,
+      "repo": null,
+      "default": true,
+      "note": "打分头未接入(需训练家族 VAE)",
+      "assets": {
+        "weights": [],
+        "source": [],
+        "tool": []
+      }
+    },
+    "eve": {
+      "name": "eve",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": "3.10",
+      "status": "blocked",
+      "device_req": "any",
+      "requires": {},
+      "params": [],
+      "pip": [
+        {
+          "spec": "torch",
+          "index_url": "https://download.pytorch.org/whl/cu121"
+        },
+        "pandas",
+        "numpy",
+        "tqdm",
+        "scipy",
+        "scikit-learn"
+      ],
+      "repo": {
+        "git": "https://github.com/OATML-Markslab/EVE.git",
+        "dest": "repos/EVE"
+      },
+      "default": true,
+      "note": "打分头未接入(需训练)",
+      "assets": {
+        "weights": [
+          {
+            "cos": "warm/eve/pbatase_vae_checkpoint",
+            "dest": "eve/results/VAE_parameters"
+          },
+          {
+            "cos": "warm/eve/pbatase_evol_indices.csv",
+            "dest": "eve/data/pbatase_evol_indices.csv"
+          },
+          {
+            "cos": "warm/eve/pbatase.a2m",
+            "dest": "eve/data/MSA/pbatase.a2m"
+          }
+        ],
+        "source": [],
+        "tool": []
+      }
+    },
+    "unirep": {
+      "name": "unirep",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "blocked",
+      "device_req": "any",
+      "requires": {},
+      "params": [],
+      "pip": null,
+      "repo": null,
+      "default": true,
+      "note": "打分头未接入(需 evotuning 权重)",
+      "assets": {
+        "weights": [],
+        "source": [],
+        "tool": []
+      }
+    },
+    "muformer": {
+      "name": "muformer",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "blocked",
+      "device_req": "any",
+      "requires": {},
+      "params": [],
+      "pip": null,
+      "repo": null,
+      "default": true,
+      "note": "需单点突变湿实验数据 + GPU 训练",
+      "assets": {
+        "weights": [],
+        "source": [],
+        "tool": []
+      }
+    },
+    "rosetta": {
+      "name": "rosetta",
+      "kind": "score",
+      "env": "dockbuddy",
+      "python": null,
+      "status": "restricted",
+      "device_req": "any",
+      "requires": {},
+      "params": [],
+      "pip": [],
+      "repo": null,
+      "default": true,
+      "note": "PyRosetta 非商业许可(flex_ddg 未接入)",
+      "assets": {
+        "weights": [
+          {
+            "cos": "warm/rosetta/pyrosetta-2026.29+releasequarterly.80a0635615-cp310-cp310-linux_x86_64.whl",
+            "dest": "rosetta/assets/pyrosetta-2026.29+releasequarterly.80a0635615-cp310-cp310-linux_x86_64.whl"
+          }
+        ],
+        "source": [],
+        "tool": []
+      }
+    }
+  }
+}
