@@ -1,0 +1,18 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "fair-esm"
+  ],
+  "repo": null,
+  "weights": [
+    {
+      "cos": "hot/esm2/esm2_t33_650M_UR50D.pt",
+      "dest": "esm2_t33_650M_UR50D.pt"
+    },
+    {
+      "cos": "hot/esm2/esm2_t6_8M_UR50D.pt",
+      "dest": "esm2_t6_8M_UR50D.pt"
+    }
+  ],
+  "default": true
+}

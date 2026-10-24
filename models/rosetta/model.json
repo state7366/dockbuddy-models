@@ -1,0 +1,13 @@
+{
+  "env": "dockbuddy",
+  "pip": [],
+  "repo": null,
+  "weights": [
+    {
+      "cos": "warm/rosetta/pyrosetta-2026.29+releasequarterly.80a0635615-cp310-cp310-linux_x86_64.whl",
+      "dest": "assets/pyrosetta-2026.29+releasequarterly.80a0635615-cp310-cp310-linux_x86_64.whl"
+    }
+  ],
+  "default": true,
+  "notes": "PyRosetta 现为 quarterly builds, 学术/非商业用户免 license key(pip 装 wheel 即可, 遵守 RosettaCommons 非商业许可)。pip 留空: PyPI 无 pyrosetta 包, wheel 走 weights 拉取后由 _install_deps 的 .whl 自动 install(--no-deps)落位, 不进镜像。"
+}

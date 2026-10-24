@@ -1,0 +1,55 @@
+{
+  "env": "dockbuddy",
+  "pip": [],
+  "repo": {
+    "git": "https://github.com/dauparas/ProteinMPNN.git",
+    "dest": "repos/ProteinMPNN"
+  },
+  "weights": [
+    {
+      "cos": "warm/proteinmpnn/vanilla_model_weights/v_48_002.pt",
+      "dest": "vanilla_model_weights/v_48_002.pt"
+    },
+    {
+      "cos": "warm/proteinmpnn/vanilla_model_weights/v_48_010.pt",
+      "dest": "vanilla_model_weights/v_48_010.pt"
+    },
+    {
+      "cos": "warm/proteinmpnn/vanilla_model_weights/v_48_020.pt",
+      "dest": "vanilla_model_weights/v_48_020.pt"
+    },
+    {
+      "cos": "warm/proteinmpnn/vanilla_model_weights/v_48_030.pt",
+      "dest": "vanilla_model_weights/v_48_030.pt"
+    },
+    {
+      "cos": "warm/proteinmpnn/soluble_model_weights/v_48_002.pt",
+      "dest": "soluble_model_weights/v_48_002.pt"
+    },
+    {
+      "cos": "warm/proteinmpnn/soluble_model_weights/v_48_010.pt",
+      "dest": "soluble_model_weights/v_48_010.pt"
+    },
+    {
+      "cos": "warm/proteinmpnn/soluble_model_weights/v_48_020.pt",
+      "dest": "soluble_model_weights/v_48_020.pt"
+    },
+    {
+      "cos": "warm/proteinmpnn/soluble_model_weights/v_48_030.pt",
+      "dest": "soluble_model_weights/v_48_030.pt"
+    },
+    {
+      "cos": "warm/proteinmpnn/ca_model_weights/v_48_002.pt",
+      "dest": "ca_model_weights/v_48_002.pt"
+    },
+    {
+      "cos": "warm/proteinmpnn/ca_model_weights/v_48_010.pt",
+      "dest": "ca_model_weights/v_48_010.pt"
+    },
+    {
+      "cos": "warm/proteinmpnn/ca_model_weights/v_48_020.pt",
+      "dest": "ca_model_weights/v_48_020.pt"
+    }
+  ],
+  "default": true
+}

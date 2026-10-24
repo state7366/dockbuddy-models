@@ -1,0 +1,19 @@
+{
+  "env": "dockbuddy",
+  "pip": [],
+  "extra_repos": [
+    {
+      "name": "proteinmpnn",
+      "git": "https://github.com/dauparas/ProteinMPNN.git",
+      "dest": "repos/ProteinMPNN"
+    }
+  ],
+  "weights": [
+    {
+      "cos": "warm/proteinmpnn/soluble_model_weights/v_48_030.pt",
+      "dest": "solublempnn_v_48_030.pt"
+    }
+  ],
+  "notes": "SolubleMPNN 是 ProteinMPNN 的溶解度微调权重, 复用 proteinmpnn 层的权重; 推理代码走 ProteinMPNN 仓库(extra_repos) [2026-10-15 固化] 打分必传 checkpoint=models/solubility_mpnn/solublempnn_v_48_030.pt + receptor; repo_dir=repos/ProteinMPNN",
+  "default": true
+}

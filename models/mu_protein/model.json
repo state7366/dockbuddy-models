@@ -1,0 +1,13 @@
+{
+  "env": "muformer",
+  "python": "3.8",
+  "pip": [],
+  "repo": {
+    "git": "https://github.com/HeliXonProtein/mu_search.git",
+    "dest": "repos/mu_protein"
+  },
+  "weights": [],
+  "default": false,
+  "verify_needs_weights": false,
+  "notes": "[2026-10-16 全环境重建] pip 为空清单是**符合现状**的: 镜像建出来的 muformer env 实测 `pip freeze` 就是 0 个包(py3.8 裸环境)。本模型处于延期待办(无 PBATase 微调 checkpoint), deploy 自测只做 `import scoring.muformer` 的 import 冒烟, 不做真打分 —— 因此「重建后验证通过」只代表**裸环境可建 + 适配器可 import**, 不代表 muformer 具备打分能力, 报告里不得据此宣称该模型可用。python=3.8 显式声明是为了避免 _install_deps 缺省值语义变化时被意外改动。`verify_needs_weights: false`: 本模型验证是 import 冒烟、不加载任何权重。[2026-10-16 COS 整理] 27.2GB 权重已整体移 trash(用户拍板\"当前没用\"), weights 清空避免 _pull_weights 引用悬空。原清单(恢复时从 trash/ 前缀找回): cold/mu_protein/{uFormer-L-encoder.pt, muformer-l-BLAT_ECOLX_Ranganathan2015_CFX.pt, ur50-pcomb-prot_pmlm_1b-3x16-ckpt-checkpoint_best.pt, pretrained/pmlm_650m.pt} + warm/mu_protein/{proteingym_v0.1_split.tar.gz, IF1_ECOLI_Kelsic_2016.{fasta,train,valid,test}.tsv}。"
+}

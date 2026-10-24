@@ -1,0 +1,18 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    {
+      "spec": "openfold",
+      "extra_args": "--no-build-isolation"
+    }
+  ],
+  "repo": null,
+  "weights": [
+    {
+      "cos": "cold/esmfold/esmfold_3B_v1.pt",
+      "dest": "assets/esmfold_3B_v1.pt"
+    }
+  ],
+  "default": false,
+  "notes": "openfold 是纯 sdist(PyPI 无 wheel), 其 setup.py 顶层 `import torch`。pip 默认隔离构建环境里没有 torch → `get_requires_for_build_wheel` 阶段 ModuleNotFoundError: torch。必须 `--no-build-isolation`(2026-10-16 全环境重建时暴露; 与 G8 tranception 同类但根因是 build-time import 而非 legacy setuptools)。esmfold 为 cold 模型(default=false), 不参与本轮 17 模型基线打分, 但重建 dockbuddy 时 _install_deps 仍会尝试装它(env_map 按 env 分组不看 default), 装不上不影响其他模型。"
+}

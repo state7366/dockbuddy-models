@@ -1,0 +1,6 @@
+{
+  "model": "catpred",
+  "source": "smoke18_result_full2.json",
+  "expected": null,
+  "note": "RuntimeError: CatPred checkpoint 缺失: /home/ubuntu/dockbuddy/models/catpred/data/pretrained/production/kcat(需解压 capsule_data_update.tar.gz 到 catpred 目录, 或经 tarball 参数自动解压)"
+}

@@ -1,0 +1,42 @@
+{
+  "env": "geostab",
+  "python": "3.10",
+  "pip": [
+    "biopandas",
+    "biopython",
+    "click",
+    "pdb-tools",
+    "fair-esm"
+  ],
+  "torch_from": {
+    "env": "dockbuddy",
+    "python": "3.10"
+  },
+  "repo": {
+    "git": "https://github.com/Gonglab-THU/GeoStab.git",
+    "dest": "repos/GeoStab",
+    "patches": "patches",
+    "repo_subdir": "GeoStab"
+  },
+  "weights": [
+    {
+      "cos": "warm/geostab/GeoStab.tar.gz",
+      "dest": "assets/GeoStab.tar.gz",
+      "extract": {
+        "glob": "GeoStab/model_*/model.pt",
+        "strip": 1,
+        "to": "repos/GeoStab"
+      }
+    }
+  ],
+  "default": true,
+  "notes": "[2026-10-16 全环境重建修复] 原先本文件 pip 为空清单、且**未声明 python**, 而镜像里 geostab 的 python=3.10 / pip 依赖 / **torch 靠从 dockbuddy 环境软链**三件事全写在 deploy/setup_v9.sh 第 9 节 —— 即按 model.json 重建会得到一个 py3.8 + 无 torch + 无依赖的空 env, 自测必 FAIL。现已声明化: python=3.10 + pip 五件套 + torch_from(dockbuddy 3.10, 软链免二次下载 780MB CUDA 构建)。**每个独立 env 的 model.json 都必须显式声明 python**, 否则 _install_deps 会按其缺省值 3.8 建环境, 把一个 3.10 的 env 悄悄降级重建。 repo.patches=patches: 对上游源码的修复全部在 deploy/models/geostab/patches/(按仓库内相对路径存修复后完整文件, 入库; sourcecode/ 被 gitignore), 由 apply_model_patches.sh 在两条路径自动应用 —— 制镜像: stage_to_cos 打包进 sourcecode.tar.gz → setup_v9.sh step9 覆盖到 MODELS_DIR/geostab; 跑测试: instance.py _install_deps sftp 后覆盖到仓库根。补丁内容: ① run.sh wt 段串行化(5×esm1v+esm2+fixed 并行实测 OOM, 单进程峰值 9.7G; 无参 wait 在 set -e 下吞后台失败) ② run.sh FoldX 两处调用包 (cd dirname(bin) && ...) 子 shell(rotabase.txt 与二进制同目录) ③ run.sh FoldX 二进制四分支自解析(仓库自带>$FOLDX_BIN>PATH>部署默认路径, 取代部署脚本 sed 改写) ④ generate_features/esm1v_logits.py + esm2_embedding.py 改本地权重 + load_model_and_alphabet_core(回归头 None, 免 contact-regression.pt 卡死)。repo_subdir=GeoStab: sourcecode/ 只有唯一顶层目录 GeoStab/, sftp 平铺进 dest 后仓库根实为 dest/GeoStab(补丁目标根与 run_model_tests 的 REPO_DIR 都按此解析)。CRLF: 上游 run.sh 仓库带 CRLF(bash 语法错), 补丁版为 LF; .py 补丁 LF 化(Python 通用换行无差异)。 [v2] unit.exclude: data/(68M 训练集, grep 实证推理零引用)/train_code/(2.9M)/model_*/model.pt(~55M 权重, 走 weights 通道 extract 回填 repos/geostab 的 model_* 目录——run.sh 期望权重在仓库树内) → src-geostab 单元 ~6M。",
+  "unit": {
+    "exclude": [
+      ".git",
+      "data/",
+      "train_code/",
+      "model_*/model.pt"
+    ]
+  }
+}

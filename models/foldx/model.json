@@ -1,0 +1,17 @@
+{
+  "env": "dockbuddy",
+  "pip": [],
+  "repo": null,
+  "weights": [],
+  "default": true,
+  "notes": "foldx 完整目录(foldx_20261231+rotabase.txt+molecules/)走 LOCAL_ASSETS(sourcecode.tar.gz), setup_v9.sh step3 落位 MODELS_DIR/foldx/; 不用 weights(weights 在 step3 之后才拉, 时序不匹配)。test.py bin_path=ROOT/foldx_20261231 与落位一致。 [v2] kind=tool: assets/ 打 tool 单元(units/tool-foldx.tar.gz), 实例端由本模型 setup.sh 落位(替代旧 setup_v9.sh step3 内联)。",
+  "kind": "tool",
+  "tool_install": {
+    "kind": "binary",
+    "src": "models/foldx/foldx_20261231",
+    "bin": "/usr/local/bin/foldx",
+    "links": [
+      "models/foldx/rotabase.txt:/usr/local/bin/rotabase.txt"
+    ]
+  }
+}

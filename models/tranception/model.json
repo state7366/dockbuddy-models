@@ -1,0 +1,39 @@
+{
+  "env": "tranception",
+  "python": "3.8",
+  "pip": [
+    {
+      "spec": "torch==1.13.1",
+      "index_url": "https://download.pytorch.org/whl/cpu"
+    },
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.9.3",
+    "tqdm",
+    "biopython==1.79",
+    {
+      "spec": "transformers==4.17.0",
+      "extra_args": "--only-binary :all:"
+    },
+    "tokenizers==0.11.6",
+    "datasets==1.18.3",
+    "aiohttp==3.8.1",
+    "pyarrow<12"
+  ],
+  "repo": {
+    "git": "https://github.com/OATML-Markslab/Tranception.git",
+    "dest": "repos/Tranception"
+  },
+  "weights": [
+    {
+      "cos": "warm/tranception/pytorch_model.bin",
+      "dest": "Tranception_Small/pytorch_model.bin"
+    },
+    {
+      "cos": "warm/tranception/config.json",
+      "dest": "Tranception_Small/config.json"
+    }
+  ],
+  "default": true,
+  "notes": "[2026-10-15 固化] 打分时 repo_dir 必须指 repos/Tranception(源码仓); 权重 Tranception_Small 落在 models/tranception/ 下, 调用前需软链 repos/Tranception/Tranception_Small -> models/tranception/Tranception_Small(runner 或 setup 自动; 官方约定 checkpoint 解压在 repo 内)。[2026-10-16 全环境重建实测] **transformers==4.17.0 必须带 extra_args 为 --only-binary :all:** —— 该版本 sdist 的 pyproject.toml **没有 [build-system] 段**(只有 [tool.black]), pip 回退 legacy setuptools.build_meta:__legacy__ 并建隔离构建环境; 该环境在腾讯内网镜像上解析后端依赖时撞上 puccinialin(15 个 0.1.x 版本全部 Requires-Python >=3.9, 而本 env 是 py3.8)→ 硬失败, 报错形如 \"pip subprocess to install backend dependencies ... No matching distribution found for puccinialin\"。实测该版本有 py3-none-any wheel 且 --only-binary :all: 一次装成功, 故强制走 wheel 即可绕开整条源码构建路径。教训: **老版本 transformers/类似包在新 pip + 内网镜像下, 源码构建路径比预编译 wheel 脆弱得多; 能用 wheel 就别让它 build。**"
+}

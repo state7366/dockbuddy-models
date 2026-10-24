@@ -1,0 +1,6 @@
+{
+  "status": "blocked_gpu_memory",
+  "expected": {},
+  "note": "ESMFold 3B 本地推理需 GPU 显存 ≥16GB; 冲刺实例 GN6S(Tesla P4 8GB)不足。代码链路就绪(TORCH_HOME symlink 粘合 + fold_api.esmfold_pdb_local + chunk_size=64)。解锁: A10/T4/4090 16GB+ 机型实例(机型售罄时改 transport=api 公共通道)。",
+  "updated": "2026-10-15"
+}

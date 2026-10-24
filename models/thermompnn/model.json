@@ -1,0 +1,27 @@
+{
+  "env": "dockbuddy",
+  "pip": [],
+  "repo": {
+    "git": "https://github.com/HeliXonProtein/ThermoMPNN.git",
+    "dest": "repos/ThermoMPNN"
+  },
+  "extra_repos": [
+    {
+      "name": "proteinmpnn",
+      "git": "https://github.com/dauparas/ProteinMPNN.git",
+      "dest": "repos/ProteinMPNN"
+    }
+  ],
+  "weights": [
+    {
+      "cos": "warm/thermompnn/thermoMPNN_default.pt",
+      "dest": "assets/ThermoMPNN/models/thermoMPNN_default.pt"
+    },
+    {
+      "cos": "warm/thermompnn/vanilla_model_weights/v_48_030.pt",
+      "dest": "assets/ThermoMPNN/vanilla_model_weights/v_48_030.pt"
+    }
+  ],
+  "default": true,
+  "notes": "[2026-10-15 固化] 打分必传 checkpoint=models/thermompnn/assets/ThermoMPNN/models/thermoMPNN_default.pt + receptor(WT PDB); repo_dir=repos/ProteinMPNN(复用其 vanilla utils)"
+}

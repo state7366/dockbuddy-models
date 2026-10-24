@@ -1,0 +1,16 @@
+{
+  "env": "dockbuddy",
+  "pip": [],
+  "repo": null,
+  "weights": [],
+  "default": true,
+  "notes": "gnina 预编译二进制(1.43GB 含内置 CNN 权重)走 LOCAL_ASSETS(sourcecode.tar.gz), setup_v9.sh step3 install 到 MODELS_DIR/gnina/gnina + ln /usr/local/bin/gnina; 不用 weights(weights 在 step3 之后才拉)。 [v2] kind=tool: assets/ 打 tool 单元(units/tool-gnina.tar.gz), 实例端由本模型 setup.sh 落位(替代旧 setup_v9.sh step3 内联)。",
+  "kind": "tool",
+  "tool_install": {
+    "kind": "binary",
+    "src": "models/gnina.1.3.2",
+    "dst": "models/gnina/gnina",
+    "bin": "/usr/local/bin/gnina",
+    "wrapper": "nvidia_ld"
+  }
+}

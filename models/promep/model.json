@@ -1,0 +1,6 @@
+{
+  "name": "promep",
+  "kind": "score",
+  "default": false,
+  "notes": "2026-10-15 补注册: 有 sourcecode/ 但此前无 model.json → 不在模型清单, 单元也不会被打包(静默漏掉)。default=false: 仅纳入 src-promep 单元分发。⚠️ ProMEP 权重不公开(drlnet/dmsnet.pth 无下载途径), 推理封堵——本声明不为解锁推理, 只为物料归档(权重一旦有公开途径, 加 weights 声明即可)。"
+}

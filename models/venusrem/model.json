@@ -1,0 +1,37 @@
+{
+  "env": "dockbuddy",
+  "pip": [],
+  "repo": {
+    "git": "https://github.com/ai4protein/VenusREM.git",
+    "dest": "repos/VenusREM-Harness",
+    "patches": "patches",
+    "repo_subdir": "VenusREM-Harness"
+  },
+  "local_install": {
+    "import_check": "vrh"
+  },
+  "weights": [
+    {
+      "cos": "hot/esm2_hf/config.json",
+      "dest": "esm2_hf/config.json"
+    },
+    {
+      "cos": "hot/esm2_hf/model.safetensors",
+      "dest": "esm2_hf/model.safetensors"
+    },
+    {
+      "cos": "hot/esm2_hf/vocab.txt",
+      "dest": "esm2_hf/vocab.txt"
+    },
+    {
+      "cos": "hot/esm2_hf/tokenizer_config.json",
+      "dest": "esm2_hf/tokenizer_config.json"
+    },
+    {
+      "cos": "hot/esm2_hf/special_tokens_map.json",
+      "dest": "esm2_hf/special_tokens_map.json"
+    }
+  ],
+  "notes": "vrh 是唯一依赖, 但**不写进 pip**: vrh 需本地补丁版(patches/vrh/baseline/esm2/esm2.py 让 load_esm2_model 支持 ESM2_LOCAL_PATH), 由 apply_model_patches.sh 在两条路径自动应用 —— 制镜像: stage_to_cos 打包 → setup_v9.sh 在 pip install 前覆盖到 LOCAL_ASSETS/VenusREM-Harness(2026-10-15 前为手工 cp, 现自动化); 跑测试: instance.py _install_deps sftp sourcecode 后覆盖到 repos/VenusREM-Harness/VenusREM-Harness(repo_subdir 见下)。若写 pip=['vrh'] 会装 PyPI 版(无补丁)覆盖本地版 → esm2 骨干走 HF 外网下载(违反 COS 内网铁律)。esm2 骨干用 HF 格式(esm2_hf/, COS hot 层), 区别于 esm2 模型的 fair-esm .pt。repo_subdir=VenusREM-Harness: sourcecode/ 只有唯一顶层目录, sftp 平铺进 dest 后仓库根实为 dest/VenusREM-Harness。",
+  "default": true
+}

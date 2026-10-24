@@ -1,0 +1,55 @@
+{
+  "env": "profam",
+  "python": "3.11",
+  "pip": [
+    {
+      "spec": "torch==2.5.1",
+      "index_url": "https://mirrors.tencentyun.com/pypi/simple"
+    },
+    {
+      "spec": "transformers==4.49.0",
+      "index_url": "https://pypi.tuna.tsinghua.edu.cn/simple"
+    },
+    {
+      "spec": "profam==0.1.8",
+      "index_url": "https://pypi.tuna.tsinghua.edu.cn/simple",
+      "extra_args": "--no-deps"
+    },
+    "accelerate",
+    "biopython",
+    "biotite",
+    "huggingface-hub",
+    "hydra-core",
+    "lightning",
+    "matplotlib",
+    "numba",
+    "omegaconf",
+    "pandas",
+    "python-dotenv",
+    "rich",
+    "safetensors",
+    "scikit-learn",
+    "scipy",
+    "tokenizers",
+    "torchmetrics",
+    "tqdm",
+    "wandb"
+  ],
+  "repo": null,
+  "weights": [
+    {
+      "cos": "warm/profam1/checkpoints/last.ckpt",
+      "dest": "assets/checkpoints/last.ckpt"
+    },
+    {
+      "cos": "warm/profam1/.hydra/config.yaml",
+      "dest": "assets/.hydra/config.yaml"
+    },
+    {
+      "cos": "warm/profam1/.hydra/gym_config.yaml",
+      "dest": "assets/.hydra/gym_config.yaml"
+    }
+  ],
+  "default": true,
+  "notes": "[2026-10-15 固化] env 必须 python>=3.10(profam 0.1.8 Requires-Python>=3.10, py3.8 装不上); GPU 实例上装 GPU torch(腾讯云内网镜像, 下载快免流量; 用户 2026-10-15 指示: CPU 版推理跑到明年, 不掏服务器钱) 再装 profam。腾讯云 pip 镜像(tencentyun)未同步 profam, 用清华源。 [2026-10-16 重建实测] GPU 实例上装 torch==2.5.1(腾讯云内网镜像): Tesla P4 是 sm_61 老卡, torch 2.14+cu130 报 no kernel image; 2.5.1+cu124 兼容。profam 推理显存: 32 条 prompt × bfloat16 在 8G P4 可跑(64 条 float32 需 ~8G 会 OOM)。 [2026-10-16 P1 声明化补全] 原 pip 只有 torch/profam/transformers 三项, 缺 setup_v9.sh 第 6 段硬编码的 17 个依赖(accelerate/biopython/biotite/huggingface-hub/hydra-core/lightning/matplotlib/numba/omegaconf/pandas/python-dotenv/rich/safetensors/scikit-learn/scipy/tokenizers/torchmetrics/tqdm/wandb), 现已补全; transformers 由 <5 收紧为 ==4.49.0(5.x 与 profam 0.1.8 的 LlamaConfig MoE 字段不兼容); profam 钉 ==0.1.8 并 --no-deps(依赖已单独声明)。"
+}

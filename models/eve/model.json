@@ -1,0 +1,35 @@
+{
+  "env": "eve",
+  "python": "3.10",
+  "pip": [
+    {
+      "spec": "torch",
+      "index_url": "https://download.pytorch.org/whl/cu121"
+    },
+    "pandas",
+    "numpy",
+    "tqdm",
+    "scipy",
+    "scikit-learn"
+  ],
+  "repo": {
+    "git": "https://github.com/OATML-Markslab/EVE.git",
+    "dest": "repos/EVE"
+  },
+  "weights": [
+    {
+      "cos": "warm/eve/pbatase_vae_checkpoint",
+      "dest": "results/VAE_parameters"
+    },
+    {
+      "cos": "warm/eve/pbatase_evol_indices.csv",
+      "dest": "data/pbatase_evol_indices.csv"
+    },
+    {
+      "cos": "warm/eve/pbatase.a2m",
+      "dest": "data/MSA/pbatase.a2m"
+    }
+  ],
+  "notes": "EVE 无公开预训练权重 —— 需在本家族深 MSA(6417 条)上训练 VAE 后再算进化指数; 训练产物(VAE_parameters)回传 COS warm/eve/ [2026-10-15 冲刺] checkpoint(189 列)与现 MSA(204-247 列, 全阈值扫描)不可对齐=当年训练 MSA 已漂移; 测试代码已就绪(Python API 直推, 绕开官方 CLI 的 0.3 硬编码阈值+裸 except 陷阱),需 189 列原 MSA 或重训后解锁。COS 对象本体=torch.save dict(model_state_dict/encoder/decoder_params),非 zip 非目录。[2026-10-16 全环境重建] 补两个分发缺口: ① MSA 文件 pbatase.a2m 原本不在 weights 声明里、也不在 COS 上 → 已补 warm/eve/pbatase.a2m + weights 条目; ② pip 缺 tqdm/scipy/scikit-learn(EVE 仓库 utils.data_utils/VAE_model import)→ 已补(移除无用的 biopython)。补后验证走到 `MSA 清洗后 229 列 != checkpoint 189 列`——即 baseline 已记录的数据资产待办, 环境层已完全闭环。**结论: eve 环境重建通过; 打分验证因 MSA 漂移待办(找回 189 列训练 MSA 或重训 VAE ~2h GPU), 非环境问题。**",
+  "default": true
+}

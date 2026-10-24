@@ -1,0 +1,30 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "fair-esm"
+  ],
+  "repo": null,
+  "weights": [
+    {
+      "cos": "hot/esm1v/esm1v_t33_650M_UR90S_1.pt",
+      "dest": "esm1v_t33_650M_UR90S_1.pt"
+    },
+    {
+      "cos": "hot/esm1v/esm1v_t33_650M_UR90S_2.pt",
+      "dest": "esm1v_t33_650M_UR90S_2.pt"
+    },
+    {
+      "cos": "hot/esm1v/esm1v_t33_650M_UR90S_3.pt",
+      "dest": "esm1v_t33_650M_UR90S_3.pt"
+    },
+    {
+      "cos": "hot/esm1v/esm1v_t33_650M_UR90S_4.pt",
+      "dest": "esm1v_t33_650M_UR90S_4.pt"
+    },
+    {
+      "cos": "hot/esm1v/esm1v_t33_650M_UR90S_5.pt",
+      "dest": "esm1v_t33_650M_UR90S_5.pt"
+    }
+  ],
+  "default": true
+}

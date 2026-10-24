@@ -1,0 +1,10 @@
+{
+  "model": "modeller",
+  "source": "未实测占位 —— 首次真跑通过后回填(见 test/test.py 顶部说明)",
+  "expected": {
+    "import_ok": 1,
+    "environ_ok": 1,
+    "modlib_libs": 2
+  },
+  "note": "scores 是环境可用性计数, 不是 ΔΔG: import_ok=包就位, environ_ok=license key 生效(Environ() 构造即校验点), modlib_libs=modlib 力场库读入数(2=拓扑+参数)。version 字段不参与比对(调度器只比 baseline 里列出的 key)。"
+}

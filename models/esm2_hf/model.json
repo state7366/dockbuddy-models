@@ -1,0 +1,16 @@
+{
+  "name": "esm2_hf",
+  "kind": "score",
+  "env": "dockbuddy",
+  "pip": [],
+  "repo": null,
+  "weights": [
+    { "cos": "hot/esm2_hf/config.json", "dest": "config.json" },
+    { "cos": "hot/esm2_hf/model.safetensors", "dest": "model.safetensors" },
+    { "cos": "hot/esm2_hf/special_tokens_map.json", "dest": "special_tokens_map.json" },
+    { "cos": "hot/esm2_hf/tokenizer_config.json", "dest": "tokenizer_config.json" },
+    { "cos": "hot/esm2_hf/vocab.txt", "dest": "vocab.txt" }
+  ],
+  "default": true,
+  "notes": "HF 格式 ESM-2 650M 骨干(VenusREM 的 load_esm2_model 经 ESM2_LOCAL_PATH 消费), 与 esm2 模型的 fair-esm .pt 是同一骨干的两种格式。2026-10-15 补 model.json(此前无声明 → 权重不在任何拉取清单) + 新增自测(transformers 本地加载 + WT embedding 1280×252 验收)。COS key 已实测存在(hot/esm2_hf/)。"
+}

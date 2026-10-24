@@ -1,0 +1,15 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "fair-esm",
+    "torch-scatter"
+  ],
+  "repo": null,
+  "weights": [
+    {
+      "cos": "warm/esm_if/esm_if1_gvp4_t16_142M_UR50.pt",
+      "dest": "assets/esm_if1_gvp4_t16_142M_UR50.pt"
+    }
+  ],
+  "default": true
+}

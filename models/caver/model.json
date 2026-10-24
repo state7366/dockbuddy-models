@@ -1,0 +1,14 @@
+{
+  "env": "dockbuddy",
+  "pip": [],
+  "repo": null,
+  "weights": [],
+  "default": true,
+  "notes": "caver_3.0.2.zip 走 LOCAL_ASSETS(sourcecode.tar.gz), setup_v9.sh step3 unzip 到 MODELS_DIR/caver; 不用 weights(weights 在 step3 之后才拉)。 [v2] kind=tool: assets/ 打 tool 单元(units/tool-caver.tar.gz), 实例端由本模型 setup.sh 落位(替代旧 setup_v9.sh step3 内联)。",
+  "kind": "tool",
+  "tool_install": {
+    "kind": "unzip",
+    "src": "models/caver_3.0.2.zip",
+    "dst": "models/caver"
+  }
+}

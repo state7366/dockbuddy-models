@@ -1,0 +1,9 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "fair-esm"
+  ],
+  "weights": [],
+  "notes": "LFB(家族似然比)无自有权重: 复用 esm2 权重(hot/esm2, 由 esm2/model.json 声明) + 家族 MSA(test/data/family.a2m, 来自 EVE 家族 MSA 6417 条)",
+  "default": true
+}

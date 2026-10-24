@@ -1,0 +1,44 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "vplm",
+    "sortedcontainers"
+  ],
+  "repo": null,
+  "weights": [
+    {
+      "cos": "warm/venusplm/model.safetensors",
+      "dest": "assets/model.safetensors"
+    },
+    {
+      "cos": "warm/venusplm/config.json",
+      "dest": "assets/config.json"
+    },
+    {
+      "cos": "warm/venusplm/vocab.txt",
+      "dest": "assets/vocab.txt"
+    },
+    {
+      "cos": "warm/venusplm/tokenizer_config.json",
+      "dest": "assets/tokenizer_config.json"
+    },
+    {
+      "cos": "warm/venusplm/special_tokens_map.json",
+      "dest": "assets/special_tokens_map.json"
+    },
+    {
+      "cos": "warm/venusplm/configuration_transformer.py",
+      "dest": "assets/configuration_transformer.py"
+    },
+    {
+      "cos": "warm/venusplm/modeling_transformer.py",
+      "dest": "assets/modeling_transformer.py"
+    },
+    {
+      "cos": "warm/venusplm/tokenization_transformer.py",
+      "dest": "assets/tokenization_transformer.py"
+    }
+  ],
+  "default": true,
+  "notes": "[2026-10-15 固化] 打分参数名 weights_dir=models/venusplm/assets(本地快照目录, 含 config/tokenizer/safetensors); 传错必走 HF 公网(违反内网铁律)"
+}

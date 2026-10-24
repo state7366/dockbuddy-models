@@ -1,0 +1,30 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "pandas-flavor",
+    "typed-argument-parser",
+    "rotary_embedding_torch==0.6.5",
+    "progress",
+    "faiss-cpu",
+    "ipdb",
+    "descriptastorus"
+  ],
+  "repo": {
+    "git": "https://github.com/jonathanguy/CatPred-DL.git",
+    "dest": "repos/catpred",
+    "patches": "patches"
+  },
+  "weights": [
+    {
+      "cos": "cold/catpred/capsule_data_update.tar.gz",
+      "dest": "checkpoint/capsule_data_update.tar.gz"
+    }
+  ],
+  "default": false,
+  "notes": "env 用 dockbuddy(与 2026-10-13 smoke18 实测口径一致: CatPred 跑在主环境, 复用其 torch/fair-esm/rdkit/transformers; 不要建独立 catpred env)。pip 清单来自已删的 deploy/fix_catpred.sh —— 2026-10-14 从 git 6cddcb3 捞回后归入 model.json, 遵守「模型依赖由 model.json 自我维护, 模型文件夹外零硬编码」。descriptastorus 是底物描述符, 核心推理不依赖(装失败不影响打分)。checkpoint 10GB 在 COS cold 层, 不进镜像; default=false 因体积大, 需显式按名拉取。repo.patches=patches: catpred/data/esm_utils.py 的修复(init_esm 优先本地 esm2 权重 CATPRED_ESM2_PATH/models/esm2/esm2_t33_650M_UR50D.pt + load_model_and_alphabet_core 回归头 None —— 上游 esm2_t33_650M_UR50D() 会联网下载并把 100G 盘撑爆, 且强制要 contact-regression.pt), 由 apply_model_patches.sh 在跑测试路径(_install_deps sftp sourcecode 后)自动覆盖; 制镜像路径无 catpred 源码落位故不打包其补丁。 [v2] unit.exclude: external/(70M: DLKcat/UniKP 参考模型文件, grep 实证 catpred 包/predict.py/api 零 import) → src-catpred ~11M。 [2026-10-15 固化] 打分四要素: repo_dir=repos/catpred + checkpoint_dir(models/catpred/checkpoint/data/pretrained/production/kcat, 由 tarball 自动解压) + tarball + structure_dir(WT.pdb+变体 PDB); substrate_smiles 按底物口径传",
+  "unit": {
+    "exclude": [
+      "external/"
+    ]
+  }
+}

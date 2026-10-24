@@ -1,0 +1,11 @@
+{
+  "name": "evolvepro",
+  "kind": "score",
+  "default": false,
+  "repo": {
+    "git": "https://github.com/JinyuanSun-Ctrl/EVOLVEpro.git",
+    "dest": "repos/evolvepro",
+    "patches": ""
+  },
+  "notes": "2026-10-15 补注册: 有 sourcecode/ 但此前无 model.json → 不在模型清单, 单元也不会被打包(静默漏掉)。repo.dest 让 _install_deps sftp 上传 sourcecode(实例内网连不上 github); wave1 冲刺暴露 REPO_DIR='' 即漏 repo 声明, 已补。default=false: 仅纳入 src-evolvepro 单元分发 + 编译冒烟; 部署声明(env/pip/weights)待正式接入时补(EVOLVEpro 是主动学习/DBTL 候选模型之一)。.git 由 pack 全局默认排除。"
+}

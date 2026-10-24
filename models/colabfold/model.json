@@ -1,0 +1,14 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "colabfold"
+  ],
+  "repo": null,
+  "weights": [
+    {
+      "cos": "cold/colabfold/alphafold_params_colab_2022-12-06.tar",
+      "dest": "assets/alphafold_params_colab_2022-12-06.tar"
+    }
+  ],
+  "default": false
+}

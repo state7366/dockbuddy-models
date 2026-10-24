@@ -1,0 +1,38 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "evcouplings"
+  ],
+  "repo": null,
+  "weights": [],
+  "default": true,
+  "extra_units": [
+    {
+      "id": "tool-plmc",
+      "pack": [
+        "assets/plmc"
+      ],
+      "dest": "bin/plmc",
+      "notes": "plmc C 源码树(evmutation 上位性依赖); 实例端 evmutation/setup.sh 编译: cd bin/plmc && make && cp bin/plmc /usr/local/bin/。旧路径 setup_v9.sh step3 同款。",
+      "tool_install": {
+        "kind": "compile",
+        "src": "bin/plmc",
+        "bin": "/usr/local/bin/plmc"
+      }
+    },
+    {
+      "id": "extra-evcouplings",
+      "pack": [
+        "assets/evcouplings-0.2.1-py2.py3-none-any.whl"
+      ],
+      "dest": "models/evmutation",
+      "notes": "evcouplings 本地 wheel(PyPI 版依赖冲突, 旧路径 setup_v9.sh step4 同款装法); 实例端 setup.sh pip install --no-deps 该 whl。",
+      "tool_install": {
+        "kind": "whl",
+        "src": "models/evmutation/evcouplings-0.2.1-py2.py3-none-any.whl",
+        "env": "dockbuddy"
+      }
+    }
+  ],
+  "notes": "[v2] plmc.tar.gz 与 plmc/ 冗余(未声明即不打包); evcouplings wheel 版本如更新需同步改 extra_units 的 pack 条目。 [2026-10-15 固化] 打分走全流程: a3m→a2m(去小写)→plmc 训练(focus query)→CouplingsModel→predict; 不能把 a3m 直接当 model_path 传"
+}

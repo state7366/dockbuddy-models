@@ -1,0 +1,6 @@
+{
+  "status": "blocked_data_drift",
+  "expected": {},
+  "note": "COS warm/eve/pbatase_vae_checkpoint(seq_len=189, 2026-10-13 训练)与现 data/MSA/pbatase.a2m(任何阈值下 seq_len∈[204..247])不可复现对齐——当年训练 MSA 与现版本不一致。修复途径: 找回 189 列训练 MSA 回传 COS, 或用现 MSA 重训 VAE(100k 步, ~2h GPU)。测试代码(eve/test/test.py, Python API 直推)已就绪, 对齐后即可跑通。",
+  "updated": "2026-10-15"
+}

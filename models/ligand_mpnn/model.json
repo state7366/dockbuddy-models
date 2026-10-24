@@ -1,0 +1,27 @@
+{
+  "env": "dockbuddy",
+  "pip": [],
+  "repo": {
+    "git": "https://github.com/dauparas/LigandMPNN.git",
+    "dest": "repos/LigandMPNN"
+  },
+  "weights": [
+    {
+      "cos": "warm/ligand_mpnn/ligandmpnn_v_32_005_25.pt",
+      "dest": "assets/ligandmpnn_v_32_005_25.pt"
+    },
+    {
+      "cos": "warm/ligand_mpnn/ligandmpnn_v_32_010_25.pt",
+      "dest": "assets/ligandmpnn_v_32_010_25.pt"
+    },
+    {
+      "cos": "warm/ligand_mpnn/ligandmpnn_v_32_020_25.pt",
+      "dest": "assets/ligandmpnn_v_32_020_25.pt"
+    },
+    {
+      "cos": "warm/ligand_mpnn/ligandmpnn_v_32_030_25.pt",
+      "dest": "assets/ligandmpnn_v_32_030_25.pt"
+    }
+  ],
+  "default": true
+}

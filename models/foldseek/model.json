@@ -1,0 +1,15 @@
+{
+  "name": "foldseek",
+  "kind": "tool",
+  "env": "dockbuddy",
+  "pip": [],
+  "repo": null,
+  "weights": [],
+  "default": true,
+  "notes": "foldseek 预编译二进制(30MB)走 tool 单元(assets/foldseek → models/foldseek, 实例端 setup.sh install 到 /usr/local/bin/foldseek)。是 SaProt 结构 token 编码与 venusrem MSA 检索的共享依赖。2026-10-15 补注册: 此前无 model.json, 未进模型清单(旧路径由 setup_v9.sh step3 从 LOCAL_ASSETS 直接 install); 旧 setup_v9.sh 走 wget mmseqs.com 因公网不通被 || warn 吞掉 → 镜像缺 foldseek → saprot 打分失败(2026-10-14 暴露), 故二进制必须随单元分发。",
+  "tool_install": {
+    "kind": "binary",
+    "src": "models/foldseek",
+    "bin": "/usr/local/bin/foldseek"
+  }
+}

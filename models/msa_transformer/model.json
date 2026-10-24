@@ -1,0 +1,18 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "fair-esm"
+  ],
+  "repo": null,
+  "weights": [
+    {
+      "cos": "warm/msa_transformer/esm_msa1b_t12_100M_UR50S.pt",
+      "dest": "assets/esm_msa1b_t12_100M_UR50S.pt"
+    },
+    {
+      "cos": "warm/msa_transformer/esm_msa1b_t12_100M_UR50S-contact-regression.pt",
+      "dest": "assets/esm_msa1b_t12_100M_UR50S-contact-regression.pt"
+    }
+  ],
+  "default": true
+}

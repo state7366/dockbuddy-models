@@ -1,0 +1,18 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "biopython"
+  ],
+  "repo": null,
+  "weights": [
+    {
+      "cos": "warm/ortholog/aligned_model.pt",
+      "dest": "assets/aligned_model.pt"
+    },
+    {
+      "cos": "warm/ortholog/unaligned_model.pt",
+      "dest": "assets/unaligned_model.pt"
+    }
+  ],
+  "default": true
+}

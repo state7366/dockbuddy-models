@@ -1,0 +1,29 @@
+{
+  "wt_seq": "MDEIGQAPTASNITGNGSFATTSESISSLVSGFGGGRVYYPTATGRYPVIAISPGFTATWSSLAWIGPRLSSWGFVVVGIETNSIYDQPGSRGNQLLAALNWAVNSSSTAVRSRVDGSRRGVAGHSMGGGGTLEALAADTSGLVKAGVPLAPWNTDKIWSNVSEPVLIVGGQADTIAPVATHSVPFYNTLAGPKTYVELTGASHFFPQTTNATTSRALVSWFKRWLNQDSRFTPYTCGFGGLAVSDFRSNAC",
+  "variants": [
+    {
+      "id": "F205G",
+      "site": 205,
+      "from": "F",
+      "to": "G"
+    },
+    {
+      "id": "Q208T",
+      "site": 208,
+      "from": "Q",
+      "to": "T"
+    },
+    {
+      "id": "F205S",
+      "site": 205,
+      "from": "F",
+      "to": "S"
+    },
+    {
+      "id": "Q208S",
+      "site": 208,
+      "from": "Q",
+      "to": "S"
+    }
+  ]
+}

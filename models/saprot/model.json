@@ -1,0 +1,38 @@
+{
+  "env": "dockbuddy",
+  "pip": [
+    "fair-esm"
+  ],
+  "repo": {
+    "git": "https://github.com/westlake-repl/SaProt.git",
+    "dest": "repos/SaProt"
+  },
+  "local_install": {
+    "import_check": "SaProt",
+    "extra_args": "--no-deps"
+  },
+  "weights": [
+    {
+      "cos": "hot/saprot/SaProt_650M_AF2/pytorch_model.bin",
+      "dest": "assets/SaProt_650M_AF2/pytorch_model.bin"
+    },
+    {
+      "cos": "hot/saprot/SaProt_650M_AF2/config.json",
+      "dest": "assets/SaProt_650M_AF2/config.json"
+    },
+    {
+      "cos": "hot/saprot/SaProt_650M_AF2/vocab.txt",
+      "dest": "assets/SaProt_650M_AF2/vocab.txt"
+    },
+    {
+      "cos": "hot/saprot/SaProt_650M_AF2/tokenizer_config.json",
+      "dest": "assets/SaProt_650M_AF2/tokenizer_config.json"
+    },
+    {
+      "cos": "hot/saprot/SaProt_650M_AF2/special_tokens_map.json",
+      "dest": "assets/SaProt_650M_AF2/special_tokens_map.json"
+    }
+  ],
+  "default": true,
+  "notes": "[2026-10-15 固化] 打分参数名 weights_dir(≠models_dir)=models/saprot/assets(含 SaProt_650M_AF2 父目录); saprot_repo=repos/SaProt; structure_path=WT PDB(Foldseek 编 3Di)"
+}

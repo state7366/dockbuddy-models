@@ -1,0 +1,6 @@
+{
+  "model": "geostab",
+  "source": "smoke18_result_full2.json",
+  "expected": {},
+  "note": ""
+}

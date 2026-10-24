@@ -1,0 +1,15 @@
+{
+  "env": "dockbuddy",
+  "pip": [],
+  "conda": [
+    {
+      "spec": "modeller=10.8",
+      "channel": "salilab"
+    }
+  ],
+  "repo": null,
+  "weights": [],
+  "default": true,
+  "notes": "Modeller 同源建模(salilab 学术免费版)。改用 conda 装 salilab::modeller=10.8, 因原 deploy/setup_modeller.sh 走 dpkg -i deb + sudo 写 /etc/profile.d, 与「资源全在 ubuntu 家目录、不用 root、不碰系统目录」的约定冲突, 且 deb 在本机与 COS 都不存在(跑不起来的孤儿脚本)。conda 包同时提供 mod10.8 二进制和 Python 包, pipeline 的两条调用路径(MODELLER_BIN / MODELLER_DIR)都通。license key 由 KEY_MODELLER 环境变量注入, 缺省 MODELIRANJE(官方学术通用 key, 见 pipeline/libdock/external_tools.py:113 DEFAULT_MODELLER_KEY), 无需额外配置。pipeline 入口: components/stability.py stability_modeller() -> external_tools.modeller_model()。 [2026-10-15] license_key 声明: 实例端 setup 需把 config.py 的 license 从占位 XXXX 改为该值(conda salilab 版默认占位; wave1 冲刺 Invalid license key 即缺此步)。",
+  "license_key": "MODELIRANJE"
+}
