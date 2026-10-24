@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dockbuddy-models"
-version = "0.3.0"
+version = "0.4.0"
 description = "打分模型资源管理壳子：模型注册表 + 多类型资产下载(权重/源码/工具) + 缓存 + 锁定 + 路径配置（模型数据外部传入，与 DockBuddy 项目解耦）"
 readme = "README.md"
 requires-python = ">=3.9"

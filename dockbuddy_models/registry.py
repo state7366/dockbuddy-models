@@ -112,3 +112,54 @@ class Registry:
                 continue
             self.models[name] = entry
         return self
+
+
+def assets_from_spec(name: str, spec: dict, models_dir: Optional[str] = None) -> Dict:
+    """从 model.json 的部署字段派生 assets(下载视图)，与 pack.py 单元口径对齐。
+
+    - weights: spec.weights[].{cos,dest,extract}，dest 相对模型目录 → 拼 <name>/<dest>。
+    - source: 有 sourcecode 目录 → units/src-<name>.tar.gz（pack 产出，strip 4 解包到 repos/）。
+    - tool:   tool_install → units/tool-<name>.tar.gz；extra_units → units/<id>.tar.gz。
+    这是「部署字段为主，assets 派生」的单一事实源落地：Downloader 不再依赖独立 models.json。
+    """
+    from pathlib import Path
+    assets = {"weights": [], "source": [], "tool": []}
+    for w in spec.get("weights") or []:
+        item = {"cos": w["cos"], "dest": f"{name}/{w['dest']}"}
+        if w.get("extract"):
+            item["extract"] = w["extract"]
+        assets["weights"].append(item)
+    if models_dir and (Path(models_dir) / name / "sourcecode").is_dir():
+        assets["source"].append({"cos": f"units/src-{name}.tar.gz",
+                                 "dest": f"src-{name}.tar.gz",
+                                 "extract": {"strip": 4, "to": "repos"}})
+    if spec.get("tool_install"):
+        assets["tool"].append({"cos": f"units/tool-{name}.tar.gz",
+                               "dest": f"tool-{name}.tar.gz"})
+    for ex in spec.get("extra_units") or []:
+        uid = ex.get("id") or f"extra-{name}"
+        assets["tool"].append({"cos": f"units/{uid}.tar.gz", "dest": f"{uid}.tar.gz"})
+    return assets
+
+
+def load_models_dir(models_dir: str) -> "Registry":
+    """从 per-model model.json 目录加载注册表(单一事实源)，assets 运行时派生。
+
+    每个 <models_dir>/<模型>/model.json 一个条目；kind/status/env/python/pip/repo/
+    default/device_req 等原样保留，assets 由 assets_from_spec 派生。
+    """
+    import os as _os
+    reg = Registry(models={}, meta={})
+    if not _os.path.isdir(models_dir):
+        return reg
+    for name in sorted(_os.listdir(models_dir)):
+        p = _os.path.join(models_dir, name, "model.json")
+        if not _os.path.isfile(p):
+            continue
+        spec = json.load(open(p, encoding="utf-8"))
+        entry = dict(_DEFAULTS)
+        entry.update(spec)
+        entry["name"] = name
+        entry["assets"] = assets_from_spec(name, spec, models_dir)
+        reg.models[name] = entry
+    return reg

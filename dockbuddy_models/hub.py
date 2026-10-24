@@ -27,12 +27,13 @@ from .cache import CacheStore
 from .config import Config, CosConfig
 from .cos import CosClient
 from .download import Downloader
-from .registry import Registry
+from .registry import Registry, load_models_dir
 
 
 class ModelHub:
     def __init__(self,
                  models: Optional[str] = None,
+                 models_dir: Optional[str] = None,
                  registry: Optional[Registry] = None,
                  root: Optional[str] = None,
                  models_root: Optional[str] = None,
@@ -49,9 +50,12 @@ class ModelHub:
             cache_dir=cache_dir or base.cache_dir,
             cos=cos or base.cos,
         ).resolve().ensure_dirs()
-        # 注册表(库壳子不含数据): 显式 registry > models 路径 > 环境变量 > 空注册表
+        # 注册表(库壳子不含数据): 显式 registry > models_dir(per-model 单一事实源) >
+        # models 路径 > 环境变量 > 空注册表
         if registry is not None:
             self.registry = registry
+        elif models_dir:
+            self.registry = load_models_dir(models_dir)
         elif models:
             self.registry = Registry.load(models)
         else:
