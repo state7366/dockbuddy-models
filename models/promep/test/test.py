@@ -27,9 +27,9 @@ MSA = os.path.join(COMMON, "msa.a3m")
 def run():
     import importlib
     try:
-        importlib.import_module("scoring.promep")
+        importlib.import_module("dockbuddy_scoring.promep")
     except Exception as e:  # noqa: BLE001
-        raise RuntimeError(f"scoring.promep 加载失败(封堵态预期): "
+        raise RuntimeError(f"dockbuddy_scoring.promep 加载失败(封堵态预期): "
                            f"{type(e).__name__}: {e}")
     return {"adapter_import": 1}
 

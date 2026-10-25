@@ -27,9 +27,9 @@ MSA = os.path.join(COMMON, "msa.a3m")
 def run():
     import importlib
     try:
-        importlib.import_module("scoring.ortholog")
+        importlib.import_module("dockbuddy_scoring.ortholog")
     except Exception as e:  # noqa: BLE001
-        raise RuntimeError(f"scoring.ortholog 加载失败: {type(e).__name__}: {e}")
+        raise RuntimeError(f"dockbuddy_scoring.ortholog 加载失败: {type(e).__name__}: {e}")
     return {"adapter_import": 1}
 
 
