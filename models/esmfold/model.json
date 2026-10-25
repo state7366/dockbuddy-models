@@ -1,11 +1,6 @@
 {
   "env": "dockbuddy",
-  "pip": [
-    {
-      "spec": "openfold @ git+https://github.com/aqlaboratory/openfold.git@4b41059694619831a7db195b7e0988fc4ff3a307",
-      "extra_args": "--no-build-isolation"
-    }
-  ],
+  "pip": [],
   "repo": null,
   "weights": [
     {
@@ -14,6 +9,6 @@
     }
   ],
   "default": false,
-  "expected_fail": "本地 ESMFold 折叠依赖 openfold(CUDA C++ 扩展)+GPU≥16G。openfold PyPI 0.0.1 sdist 缺 scripts 模块(setup.py 顶层 import scripts)是坏的, 须装 git 源码(本条目已改为 git URL); 但 git 源码构建需 nvcc, 标准镜像不烤 CUDA toolkit → 无 nvcc 必失败。esmfold 为 cold 模型(default=false), 不参与基线打分; 本地折叠能力属待办(需在带 CUDA toolkit 的 GPU 镜像里单独部署, 或走 transport=api)。",
-  "notes": "openfold 无官方 wheel, PyPI 0.0.1 sdist 是坏的(缺 scripts 模块, 报 ModuleNotFoundError: scripts, 与 2026-10-16 记的 torch build-time import 是两码事)。git 源码正确但需 nvcc 编 CUDA 扩展。esmfold_3B 权重在 COS cold/esmfold/, 首次加载走 torch hub 自动下载(受 TORCH_HOME 控制)。"
+  "expected_fail": "本地 ESMFold 折叠依赖 openfold(CUDA C++ 扩展)+GPU≥16G。openfold 无官方 wheel(PyPI 0.0.1 sdist 缺 scripts 是坏的), git 源码构建需 nvcc 编 CUDA 扩展, 标准镜像不烤 CUDA toolkit → 无 nvcc 必失败, 且在 CPU 镜像烤制时会卡 git clone+编译(2026-10-25 阶段E 暴露, 故 pip 留空不装)。esmfold 为 cold 模型(default=false), 不参与基线打分; 本地折叠能力属待办(需在带 CUDA toolkit 的 GPU 镜像里单独部署, 或走 transport=api)。",
+  "notes": "pip 留空: openfold 装不上(PyPI 坏包/git 需 nvcc), 且 esmfold 是 expected_fail。esmfold_3B 权重在 COS cold/esmfold/, 首次加载走 torch hub 自动下载(受 TORCH_HOME 控制)。若将来有带 nvcc 的 GPU 镜像, 再声明 pip: openfold @ git+https://github.com/aqlaboratory/openfold.git@4b41059694619831a7db195b7e0988fc4ff3a307 (--no-build-isolation)。"
 }
