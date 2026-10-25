@@ -1,11 +1,12 @@
 {
   "env": "eve",
   "python": "3.10",
+  "torch": {
+    "wheel_url": "https://mirrors.aliyun.com/pytorch-wheels/cu121/torch-2.5.1%2Bcu121-cp310-cp310-linux_x86_64.whl",
+    "wheel_path": "/tmp/torch-2.5.1+cu121-cp310-cp310-linux_x86_64.whl",
+    "note": "2026-10-25 从 download.pytorch.org/whl/cu121 改阿里云 pytorch-wheels(与 dockbuddy_env.json 同源), 否则 CPU 竞价实例境外下载 780MB 慢/卡导致 install_envs 中断(eve 之后 geostab/profam/tranception 没建)。wheel_path 与 dockbuddy 同路径 → 复用已下载 wheel 零重拉。"
+  },
   "pip": [
-    {
-      "spec": "torch",
-      "index_url": "https://download.pytorch.org/whl/cu121"
-    },
     "pandas",
     "numpy",
     "tqdm",
