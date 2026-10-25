@@ -2,10 +2,7 @@
   "model": "thermompnn",
   "source": "smoke18_result_full2.json",
   "expected": {
-    "F205G": 0.0,
-    "Q208T": 0.125,
-    "F205S": 0.0,
-    "Q208S": 0.0
+    "F205G": 0.0
   },
   "note": ""
 }

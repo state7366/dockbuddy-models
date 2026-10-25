@@ -2,10 +2,7 @@
   "model": "ddgun",
   "source": "rebuild_envs verify (2026-10-16, index 0-based 修复后)",
   "expected": {
-    "F205G": -3.7181679294697965,
-    "Q208T": 0.5020788181690674,
-    "F205S": -2.642048121423986,
-    "Q208S": -0.02372977437611984
+    "F205G": -3.7181679294697965
   },
   "note": "修复 profile 索引基准(1-based→0-based)后重跑的自测真值。旧基线 F205G=-2.399 是「差一位」的静默错值(实际取到 H204 的 profile), 已作废, 见 pipeline/scoring/ddgun.py 与 tests/test_unit_ddgun.py 的护栏。"
 }

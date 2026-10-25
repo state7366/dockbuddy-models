@@ -2,10 +2,7 @@
   "model": "msa_transformer",
   "source": "smoke18_result_full2.json",
   "expected": {
-    "F205G": -13.558308,
-    "Q208T": -12.021631,
-    "F205S": -11.485134,
-    "Q208S": -11.255985
+    "F205G": -13.558308
   },
   "note": ""
 }

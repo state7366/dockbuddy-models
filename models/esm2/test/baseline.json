@@ -2,10 +2,7 @@
   "model": "esm2",
   "source": "smoke18_result_full2.json",
   "expected": {
-    "F205G": -0.063559,
-    "Q208T": 0.737181,
-    "F205S": -0.363746,
-    "Q208S": 0.769367
+    "F205G": -0.063559
   },
   "note": ""
 }

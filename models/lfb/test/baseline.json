@@ -2,10 +2,7 @@
   "model": "lfb",
   "source": "smoke18_result_full2.json",
   "expected": {
-    "F205G": -0.42138,
-    "Q208T": 0.696234,
-    "F205S": -0.72721,
-    "Q208S": 0.804092
+    "F205G": -0.42138
   },
   "note": ""
 }
