@@ -8,7 +8,7 @@
   "kind": "tool",
   "tool_install": {
     "kind": "binary",
-    "src": "models/foldx/foldx_20261231",
+    "src": "models/foldx/foldx_20270131",
     "bin": "/usr/local/bin/foldx",
     "links": [
       "models/foldx/rotabase.txt:/usr/local/bin/rotabase.txt"
