@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.geostab import score_variants
+    from dockbuddy_scoring.geostab import score_variants
     # geostab_dir 优先用 REPO_DIR(跑测试路径: _install_deps 上传 sourcecode +
     # apply_model_patches.sh 打补丁后的仓库根, 经 model.json repo_subdir 解析);
     # 回退 MODEL_ROOT(制镜像路径: setup_v9.sh step9 落位 + 补丁)。

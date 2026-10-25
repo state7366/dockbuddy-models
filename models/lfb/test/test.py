@@ -38,7 +38,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 def run():
     import random
-    from scoring.lfb import score_variants
+    from dockbuddy_scoring.lfb import score_variants
     # lfb 基线口径(tools/run_lfb_local.py): eve a2m(6417条) → 去插入+gap填充
     # → 采样 500(seed42) → esm2_t6_8M。之前误用 650M + 前200条 raw a2m, 数值不对。
     a2m = os.path.join(DATA, "family.a2m")

@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.catpred import score_variants
+    from dockbuddy_scoring.catpred import score_variants
     return score_variants(WT, VAR, repo_dir=REPO,
                           checkpoint_dir=os.path.join(ROOT, "data", "pretrained",
                                                       "production", "kcat"),

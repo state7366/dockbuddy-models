@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.esm_if import score_variants
+    from dockbuddy_scoring.esm_if import score_variants
     return score_variants(WT, VAR, structure_pdb=PDB, chain="A",
                           models_dir=os.path.join(ROOT, "assets"), device="cpu")
 

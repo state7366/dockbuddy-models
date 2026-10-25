@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.tranception import score_variants
+    from dockbuddy_scoring.tranception import score_variants
     return score_variants(WT, VAR, repo_dir=REPO, model_name="Tranception_Small",
                           checkpoint_dir=os.path.join(ROOT, "Tranception_Small"))
 

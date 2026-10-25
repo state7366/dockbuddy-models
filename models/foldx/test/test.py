@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.foldx import score_variants
+    from dockbuddy_scoring.foldx import score_variants
     # foldx 签名: score_variants(receptor_pdb, variants, *, chain=..., bin_path=...)
     # bin_path 指向真实二进制目录(该目录含 rotabase.txt, cwd=dirname(bin_path))
     r = score_variants(PDB, VAR, bin_path=os.path.join(ROOT, "foldx_20261231"), chain="A")

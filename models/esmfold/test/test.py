@@ -36,7 +36,7 @@ def run():
     dst = os.path.join(hub_dir, "esmfold_3B_v1.pt")
     if not os.path.exists(dst):
         os.symlink(ckpt, dst)
-    from prescreen.fold_api import esmfold_pdb_local
+    from dockbuddy_prescreen.fold_api import esmfold_pdb_local
     pdb = esmfold_pdb_local(WT, device="cuda", chunk_size=64)
     n_res = sum(1 for ln in pdb.splitlines() if ln.startswith("ATOM"))
     if not pdb.startswith("PARENT") or n_res < len(WT):

@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.ddgun import score_variants
+    from dockbuddy_scoring.ddgun import score_variants
     return score_variants(WT, VAR, msa=MSA)
 
 

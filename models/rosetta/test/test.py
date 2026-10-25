@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.rosetta import score_variants
+    from dockbuddy_scoring.rosetta import score_variants
     return score_variants(WT, VAR, pdb_path=PDB)
 
 

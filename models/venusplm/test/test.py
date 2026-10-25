@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.venusplm import score_variants
+    from dockbuddy_scoring.venusplm import score_variants
     # 本地权重(避免 HF 外网连不上), 与 verify 口径一致
     return score_variants(WT, VAR, model_name=os.path.join(ROOT, "assets"),
                           local_files_only=True, device="cpu")

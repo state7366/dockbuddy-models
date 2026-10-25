@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.saprot import score_variants
+    from dockbuddy_scoring.saprot import score_variants
     return score_variants(WT, VAR, weights_dir=os.path.join(ROOT, "assets"),
                           structure_path=PDB, chain="A", saprot_repo=REPO)
 

@@ -53,7 +53,7 @@ def _family_from_a3m(path: str, limit: int = 64) -> list:
 
 def run():
     import torch
-    from scoring.profam import score_variants
+    from dockbuddy_scoring.profam import score_variants
     fam = _family_from_a3m(MSA, limit=64)
     wt_len = len(WT)
     fam_aligned = [s for s in fam if len(s) == wt_len]

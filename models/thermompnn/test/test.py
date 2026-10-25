@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.thermompnn import score_variants
+    from dockbuddy_scoring.thermompnn import score_variants
     return score_variants(WT, VAR, receptor=PDB,
                           repo_dir=REPOS.get("proteinmpnn", "/home/ubuntu/dockbuddy/repos/ProteinMPNN"),
                           checkpoint=os.path.join(ROOT, "assets", "ThermoMPNN", "models", "thermoMPNN_default.pt"),

@@ -55,7 +55,7 @@ def run():
         subprocess.run(["plmc", "-o", params, "-f", "query", "-le", "16.0",
                         "-lh", "0.01", "-m", "100", "-g", a2m], check=True,
                        capture_output=True)
-    from scoring.evmutation import score_variants
+    from dockbuddy_scoring.evmutation import score_variants
     return score_variants(WT, VAR, model_params=params)
 
 

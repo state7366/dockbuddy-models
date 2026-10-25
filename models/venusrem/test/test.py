@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.venusrem import score_variants
+    from dockbuddy_scoring.venusrem import score_variants
     # esm2 骨干用 COS 内网拉下的 HF 格式(ROOT/esm2_hf), 设 esm2_local_path 让 vrh
     # 从本地加载(ESM2_LOCAL_PATH), 避免 from_pretrained 走 HF 外网下载。
     return score_variants(WT, VAR, model="esm2",

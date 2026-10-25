@@ -25,7 +25,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.mpnn import redesign_sequences
+    from dockbuddy_scoring.mpnn import redesign_sequences
     repo = REPO or REPOS.get("proteinmpnn", "")
     if not repo:
         raise RuntimeError("ProteinMPNN 仓库路径缺失(REPO_DIR 未注入)")

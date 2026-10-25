@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.solubility_mpnn import score_variants
+    from dockbuddy_scoring.solubility_mpnn import score_variants
     return score_variants(WT, VAR, receptor=PDB,
                           repo_dir=REPOS.get("proteinmpnn", "/home/ubuntu/dockbuddy/repos/ProteinMPNN"),
                           checkpoint=os.path.join(ROOT, "solublempnn_v_48_030.pt"),

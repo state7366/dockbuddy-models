@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.esm2 import esm2_scores
+    from dockbuddy_scoring.esm2 import esm2_scores
     # 基线口径 = esm2_t6_8M_UR50D(8M), 与 tools/run_final6_eval.py 一致
     # models_dir=ROOT: 从 COS 拉下的本地权重加载(对齐 esm1v test.py), 不走
     # torch.hub 境外 dl.fbaipublicfiles.com(违反内网铁律)

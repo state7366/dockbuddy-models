@@ -37,7 +37,7 @@ MSA = os.path.join(COMMON, "msa.a3m")
 
 
 def run():
-    from scoring.esm import esm1v_scores
+    from dockbuddy_scoring.esm import esm1v_scores
     return esm1v_scores(WT, VAR, models_dir=ROOT, device="auto")
 
 
