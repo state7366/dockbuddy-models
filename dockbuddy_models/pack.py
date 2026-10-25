@@ -48,28 +48,14 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 # ---------------------------------------------------------------------------
-# DockBuddy 部署路径约定（tar arcname 前缀 + 实例端落位根）。高内聚：打包发布侧
-# 与 DockBuddy 实例端部署根强绑定，故这里收敛为模块级常量，供本包 pack/push 与
-# 主仓库 shim 共用。可经环境变量 DOCK_DEPLOY_ROOT 覆盖（缺省 /home/ubuntu/dockbuddy）。
+# DockBuddy 部署路径约定（tar arcname 前缀 + 实例端落位根）。单一事实源在
+# deploy_paths.py（HOME 一处派生，可经 DOCK_DEPLOY_HOME 覆盖），此处 re-export
+# 供本包 pack/push 与主仓库 shim 共用。
 # ---------------------------------------------------------------------------
-DEPLOY_ROOT = os.environ.get("DOCK_DEPLOY_ROOT", "/home/ubuntu/dockbuddy").rstrip("/")
-_HOME = DEPLOY_ROOT.rsplit("/", 1)[0]           # /home/ubuntu
-ARC_HOME = _HOME.lstrip("/")                     # home/ubuntu
-ARC_HOME_FIRST = ARC_HOME.split("/")[0]          # home
-ARC_ROOT = f"{ARC_HOME}/dockbuddy"               # home/ubuntu/dockbuddy
-PATCHES_ROOT = f"{DEPLOY_ROOT}/_patches"
-PATCHES_ARC = f"{ARC_ROOT}/_patches"
+from .deploy_paths import (HOME, CONDA_ROOT, DEPLOY_ROOT, MODELS_ROOT, CODE_ROOT,  # noqa: F401
+                           REPOS_ROOT, HOME_MODELS, PATCHES_ROOT, ARC_HOME,
+                           ARC_HOME_FIRST, ARC_ROOT, PATCHES_ARC, abs_dock)
 DOCK_ROOT = DEPLOY_ROOT
-
-
-def abs_dock(path: str) -> str:
-    """相对 DEPLOY_ROOT 的路径 → 实例端绝对路径(兼容旧绝对路径声明)。"""
-    p = (path or "").rstrip("/")
-    if not p:
-        return ""
-    if p.startswith("/"):
-        return p
-    return f"{DEPLOY_ROOT}/{p}"
 
 
 HERE = Path(__file__).resolve().parent            # dockbuddy_models/ 包目录
