@@ -5,7 +5,8 @@
   "weights": [
     {
       "cos": "warm/rosetta/pyrosetta-2026.29+releasequarterly.80a0635615-cp310-cp310-linux_x86_64.whl",
-      "dest": "assets/pyrosetta-2026.29+releasequarterly.80a0635615-cp310-cp310-linux_x86_64.whl"
+      "dest": "assets/pyrosetta-2026.29+releasequarterly.80a0635615-cp310-cp310-linux_x86_64.whl",
+      "import_check": "from pyrosetta import init"
     }
   ],
   "default": true,
