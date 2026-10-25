@@ -1,6 +1,8 @@
 {
   "model": "geostab",
-  "source": "smoke18_result_full2.json",
-  "expected": {},
-  "note": ""
+  "source": "e2e verify 2026-10-25 (GPU 实例, 只跑 F205G)",
+  "expected": {
+    "F205G": -0.4074647128582001
+  },
+  "note": "阶段B 现有env验证实测真值(过时失败记录已作废, 模型已通过)"
 }

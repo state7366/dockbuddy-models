@@ -1,6 +1,8 @@
 {
   "model": "catpred",
-  "source": "smoke18_result_full2.json",
-  "expected": null,
-  "note": "RuntimeError: CatPred checkpoint 缺失: /home/ubuntu/dockbuddy/models/catpred/data/pretrained/production/kcat(需解压 capsule_data_update.tar.gz 到 catpred 目录, 或经 tarball 参数自动解压)"
+  "source": "e2e verify 2026-10-25 (GPU 实例, 只跑 F205G)",
+  "expected": {
+    "F205G": 0.370292
+  },
+  "note": "阶段B 现有env验证实测真值(过时失败记录已作废, 模型已通过)"
 }
