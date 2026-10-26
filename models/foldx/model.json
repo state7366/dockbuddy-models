@@ -11,7 +11,8 @@
     "src": "models/foldx/foldx_20270131",
     "bin": "/usr/local/bin/foldx",
     "links": [
-      "models/foldx/rotabase.txt:/usr/local/bin/rotabase.txt"
+      "models/foldx/rotabase.txt:/usr/local/bin/rotabase.txt",
+      "models/foldx/molecules:/usr/local/bin/molecules"
     ]
   }
 }
