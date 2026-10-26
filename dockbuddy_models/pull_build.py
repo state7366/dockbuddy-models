@@ -77,6 +77,11 @@ def _download_tar(key: str, expect_sha256: str = "") -> None:
         if not actual.startswith(expect_sha256):
             print(f"[pull] sha256 不一致 {key}: 期望 {expect_sha256[:12]}..., "
                   f"实际 {actual[:12]}..., 重拉一次", flush=True)
+            # 先删旧文件再重拉: dcommon_cos.pull_file 对已存在(≥1字节)文件幂等跳过,
+            # 不删则"重拉"实际不重下(2026-10-26 部署暴露: test-foldx/test-gnina 因
+            # /tmp 旧缓存 sha256 校验失败重拉无效)。
+            if os.path.isfile(local):
+                os.remove(local)
             pull_file(key, local, internal=True)
             actual = _sha256_file(local)
             if not actual.startswith(expect_sha256):
